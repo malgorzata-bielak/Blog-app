@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Header from "./components/Header";
-import Filters from "./components/Filters";
-import Posts from "./components/Posts";
+import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
+import AppRouter from "./routers/AppRouter";
+
+const store = configureStore();
 
 const jsx = (
   <div>
-    <Header />
-    <Filters />
-    <Posts />
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
   </div>
 );
 
