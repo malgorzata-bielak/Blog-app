@@ -1,23 +1,28 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
+import createHistory from "history/createBrowserHistory";
 import EditPostPage from "../components/EditPostPage";
 import AddPostPage from "../components/AddPostPage";
 import DashboardPage from "../components/DashboardPage";
-import Header from "../components/Header";
 import ReadPostPage from "../components/ReadPostPage";
+import LoginPage from "../components/LoginPage";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
+
+export const history = createHistory();
 
 const AppRouter = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <div>
-      <Header />
       <Switch>
-        <Route path="/read/:id" component={ReadPostPage} />
-        <Route path="/" component={DashboardPage} exact />
-        <Route path="/create" component={AddPostPage} />
-        <Route path="/edit/:id" component={EditPostPage} />
+        <PublicRoute path="/" component={LoginPage} exact />
+        <PrivateRoute path="/dashboard" component={DashboardPage} />
+        <PrivateRoute path="/create" component={AddPostPage} />
+        <PrivateRoute path="/edit/:id" component={EditPostPage} />
+        <PrivateRoute path="/read/:id" component={ReadPostPage} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRouter;

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const PostListItem = ({ title, id }) => (
   <div>
     <Link to={`/edit/${id}`}>
-      <h3>{`${title.trim()}...`}</h3>
+      <h3>{title}</h3>
     </Link>
   </div>
 );

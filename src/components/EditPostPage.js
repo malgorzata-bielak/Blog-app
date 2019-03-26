@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import PostForm from "./PostForm";
-import { editPost, removePost } from "../actions/posts";
+import { startEditPost, startRemovePost } from "../actions/posts";
 
 class EditPostPage extends React.Component {
   onSubmit = post => {
-    this.props.editPost(this.props.post.id, post);
+    this.props.startEditPost(this.props.post.id, post);
     this.props.history.push("/");
   };
 
   onRemove = () => {
-    this.props.removePost(this.props.post.id);
+    this.props.startRemovePost(this.props.post.id);
     this.props.history.push("/");
   };
 
@@ -36,18 +36,18 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, _props) => ({
-  editPost: (id, post) => dispatch(editPost(id, post)),
-  removePost: id => dispatch(removePost(id))
+  startEditPost: (id, post) => dispatch(startEditPost(id, post)),
+  startRemovePost: id => dispatch(startRemovePost(id))
 });
 
 EditPostPage.propTypes = {
-  editPost: PropTypes.func.isRequired,
-  removePost: PropTypes.func.isRequired,
+  startEditPost: PropTypes.func.isRequired,
+  startRemovePost: PropTypes.func.isRequired,
   post: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
     body: PropTypes.string,
-    createdAt: PropTypes.object
+    createdAt: PropTypes.number
   }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func

@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import PostForm from "./PostForm";
-import { addPost } from "../actions/posts";
+import { startAddPost } from "../actions/posts";
 
 class AddPostPage extends React.Component {
   onSubmit = post => {
-    this.props.addPost(post);
+    this.props.startAddPost(post);
     this.props.history.push("/");
   };
 
@@ -16,11 +16,11 @@ class AddPostPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch, _props) => ({
-  addPost: post => dispatch(addPost(post))
+  startAddPost: post => dispatch(startAddPost(post))
 });
 
 AddPostPage.propTypes = {
-  addPost: PropTypes.func.isRequired,
+  startAddPost: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func
   }).isRequired
@@ -29,4 +29,5 @@ AddPostPage.propTypes = {
 export default connect(
   undefined,
   mapDispatchToProps
+  // { startAddPost } // instead of mapDispatchToProps
 )(AddPostPage);
