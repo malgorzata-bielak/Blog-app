@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import "./styles/styles.scss";
 import configureStore from "./store/configureStore";
 import AppRouter, { history } from "./routers/AppRouter";
 import { firebase } from "./firebase/firebase";
 import { startSetPosts } from "./actions/posts";
 import { login, logout } from "./actions/auth";
+import LoadingPage from "./components/LoadingPage";
 
 const store = configureStore();
 
@@ -25,7 +27,7 @@ const renderApp = () => {
   }
 };
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById("app"));
+ReactDOM.render(<LoadingPage />, document.getElementById("app"));
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {

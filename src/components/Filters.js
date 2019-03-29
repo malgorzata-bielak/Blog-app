@@ -22,30 +22,37 @@ class Filters extends React.Component {
 
   render() {
     return (
-      <div>
-        <input
-          value={this.props.filters.text}
-          placeholder="Search posts"
-          onChange={this.onTextChange}
-        />
-        <select value={this.props.filters.sortBy} onChange={this.onSortChange}>
-          <option value="title">By Title</option>
-          <option value="date">By Date</option>
-        </select>
-        <button onClick={this.onClick}>Add Post</button>
+      <div className="filters-group">
+        <div className="filters">
+          <input
+            className="text-input"
+            value={this.props.filters.text}
+            placeholder="Search posts"
+            onChange={this.onTextChange}
+          />
+          <select className="select" value={this.props.filters.sortBy} onChange={this.onSortChange}>
+            <option value="title">By title</option>
+            <option value="date">By date</option>
+          </select>
+        </div>
+        <div>
+          <button className="button" onClick={this.onClick}>
+            Add Post
+          </button>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  filters: state.filters
+  filters: state.filters,
 });
 
 const mapDispatchToProps = dispatch => ({
   searchByText: text => dispatch(searchByText(text)),
   sortByDate: () => dispatch(sortByDate()),
-  sortByTitle: () => dispatch(sortByTitle())
+  sortByTitle: () => dispatch(sortByTitle()),
 });
 
 Filters.propTypes = {
@@ -54,11 +61,11 @@ Filters.propTypes = {
   sortByDate: PropTypes.func.isRequired,
   sortByTitle: PropTypes.func.isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Filters);

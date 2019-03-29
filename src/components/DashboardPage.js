@@ -4,7 +4,7 @@ import Filters from "./Filters";
 import PostList from "./PostList";
 
 const DashboardPage = props => (
-  <div>
+  <div className="content-container">
     <Filters history={props.history} />
     <PostList />
   </div>
@@ -12,8 +12,8 @@ const DashboardPage = props => (
 
 DashboardPage.propTypes = {
   history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 export default DashboardPage;

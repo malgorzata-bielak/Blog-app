@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 export default class PostForm extends React.Component {
   static defaultProps = {
-    post: undefined
+    post: undefined,
   };
 
   constructor(props) {
@@ -13,7 +13,7 @@ export default class PostForm extends React.Component {
     this.state = {
       title: props.post ? props.post.title : "",
       body: props.post ? props.post.body : "",
-      createdAt: props.post ? moment(props.post.createdAt) : moment()
+      createdAt: props.post ? moment(props.post.createdAt) : moment(),
     };
   }
 
@@ -44,14 +44,15 @@ export default class PostForm extends React.Component {
     this.props.onSubmit({
       title: this.state.title ? this.state.title.trim() : bodyTitle,
       body: this.state.body.trim(),
-      createdAt: this.state.createdAt.valueOf()
+      createdAt: this.state.createdAt.valueOf(),
     });
   };
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form" onSubmit={this.onSubmit}>
         <input
+          className="text-input form-input"
           type="text"
           placeholder="Title"
           autoFocus
@@ -59,11 +60,12 @@ export default class PostForm extends React.Component {
           onChange={this.onTitleChange}
         />
         <textarea
+          className="text-area form-input"
           placeholder="Add your post text"
           onChange={this.onBodyChange}
           value={this.state.body}
         />
-        <button>Save Post</button>
+        <button className="button">Save Post</button>
       </form>
     );
   }
@@ -74,6 +76,6 @@ PostForm.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string,
     body: PropTypes.string,
-    createdAt: PropTypes.number
-  })
+    createdAt: PropTypes.number,
+  }),
 };

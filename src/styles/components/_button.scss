@@ -1,0 +1,17 @@
+.button {
+  background-color: $blue;
+  border-radius: 2px;
+  color: white;
+  border: none;
+  padding: 10px 8px;
+  word-break: keep-all;
+}
+
+.button--logout {
+  background-color: none;
+  font-size: 18px;
+}
+
+.button--remove {
+  background-color: #888;
+}

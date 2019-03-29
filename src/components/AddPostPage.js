@@ -11,23 +11,27 @@ class AddPostPage extends React.Component {
   };
 
   render() {
-    return <PostForm onSubmit={this.onSubmit} />;
+    return (
+      <div className="content-container">
+        <PostForm onSubmit={this.onSubmit} />
+      </div>
+    );
   }
 }
 
 const mapDispatchToProps = (dispatch, _props) => ({
-  startAddPost: post => dispatch(startAddPost(post))
+  startAddPost: post => dispatch(startAddPost(post)),
 });
 
 AddPostPage.propTypes = {
   startAddPost: PropTypes.func.isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 export default connect(
   undefined,
-  mapDispatchToProps
+  mapDispatchToProps,
   // { startAddPost } // instead of mapDispatchToProps
 )(AddPostPage);

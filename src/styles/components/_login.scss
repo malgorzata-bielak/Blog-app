@@ -1,0 +1,29 @@
+.login-box {
+  background: url("/images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box__modal {
+  background: fade-out(rgb(228, 227, 204), 0.15);
+  border-radius: 2px;
+  width: 275px;
+  height: 225px;
+  box-shadow: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box__title {
+  margin-bottom: 40px;
+  font-family: Lobster, Arial, sans-serif;
+}

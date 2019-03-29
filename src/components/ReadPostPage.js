@@ -3,16 +3,18 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const ReadPostPage = props => (
-  <div>
-    <h1>{props.post.title}</h1>
-    <p>{props.post.body}</p>
+  <div className="content-container">
+    <div className="edit-form">
+      <h1 className="read-post__title">{props.post.title}</h1>
+      <p>{props.post.body}</p>
+    </div>
   </div>
 );
 
 const mapStateToProps = (state, props) => ({
   post: state.posts.find(post => {
     return post.id === props.match.params.id;
-  })
+  }),
 });
 
 ReadPostPage.propTypes = {
@@ -20,8 +22,8 @@ ReadPostPage.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string,
     body: PropTypes.string,
-    createdAt: PropTypes.object
-  }).isRequired
+    createdAt: PropTypes.object,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps)(ReadPostPage);

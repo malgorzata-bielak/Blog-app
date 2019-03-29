@@ -18,12 +18,18 @@ class EditPostPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <Link to={`/read/${this.props.post.id}`}>
-          Post readable at: {window.location.href}
-        </Link>
+      <div className="content-container">
+        <div className="edit-form">
+          <Link className="link" onClick={this.onSubmit} to={`/read/${this.props.post.id}`}>
+            Post readable at: {window.location.href}
+          </Link>
+        </div>
         <PostForm post={this.props.post} onSubmit={this.onSubmit} />
-        <button onClick={this.onRemove}>Remove Post</button>
+        <div className="edit-form">
+          <button className="button button--remove" onClick={this.onRemove}>
+            Remove Post
+          </button>
+        </div>
       </div>
     );
   }
@@ -31,13 +37,13 @@ class EditPostPage extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    post: state.posts.find(post => post.id === props.match.params.id)
+    post: state.posts.find(post => post.id === props.match.params.id),
   };
 };
 
 const mapDispatchToProps = (dispatch, _props) => ({
   startEditPost: (id, post) => dispatch(startEditPost(id, post)),
-  startRemovePost: id => dispatch(startRemovePost(id))
+  startRemovePost: id => dispatch(startRemovePost(id)),
 });
 
 EditPostPage.propTypes = {
@@ -47,14 +53,14 @@ EditPostPage.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string,
     body: PropTypes.string,
-    createdAt: PropTypes.number
+    createdAt: PropTypes.number,
   }).isRequired,
   history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(EditPostPage);

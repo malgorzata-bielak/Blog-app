@@ -3,17 +3,21 @@ import { connect } from "react-redux";
 import { startLogin } from "../actions/auth";
 
 const LoginPage = ({ startLogin }) => (
-  <div>
-    <h1>My Blog</h1>
-    <button onClick={startLogin}>Login</button>
+  <div className="login-box">
+    <div className="login-box__modal">
+      <h1 className="login-box__title">My Blog</h1>
+      <button className="button" onClick={startLogin}>
+        Login with Google
+      </button>
+    </div>
   </div>
 );
 
 const mapDispatchToProps = dispatch => ({
-  startLogin: () => dispatch(startLogin())
+  startLogin: () => dispatch(startLogin()),
 });
 
 export default connect(
   undefined,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(LoginPage);

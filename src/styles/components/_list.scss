@@ -1,0 +1,24 @@
+.message {
+  font-style: italic;
+}
+
+.list-item {
+  border: 1px solid darken($off-white, 7%);
+  color: $dark-grey;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.4px;
+  padding: 15px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  word-break: break-all;
+  overflow: auto;
+
+  &:hover {
+    background: $off-white;
+  }
+}
+
+.list-body {
+  margin-bottom: 20px;
+}
